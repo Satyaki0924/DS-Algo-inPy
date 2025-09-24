@@ -15,7 +15,7 @@ def findPair(arr, t):
         # that needs this number to complete the sum. So, we've found our pair!
         if seen.get(arr[i]):
             # We return both the numbers and their indices.
-            return {"items": [arr[i], t-arr[i]], "indices": [seen[arr[i]], i]}
+            return {"items": [t-arr[i], arr[i]], "indices": [seen[arr[i]], i]}
         # Otherwise, calculate what number we need to find in the future to complete the sum with arr[i].
         # For example, if arr[i] is 3 and t is 11, we need 8 (because 3 + 8 = 11).
         diff = t - arr[i]
