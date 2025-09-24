@@ -28,9 +28,11 @@ def findPair(arr, t):
         # Store this needed number in 'seen', with the current index.
         # If we see this needed number later in the array, we'll know we've found a pair.
         seen[diff] = i
+    # If we finish the loop without finding a pair, return None.
+    return None
 
 # Test our function with an example array and target sum.
-res = findPair([1, 3, 7, 9, 2], 11)
+res = findPair([1, 3, 7, 9, 2], 25)
 # Print the result. It will show the pair of numbers and their indices if found, or None if not found.
 print(res)
 # This solution is much faster than checking every possible pair.
