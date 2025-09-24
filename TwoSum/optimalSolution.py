@@ -5,6 +5,9 @@
 def findPair(arr, t):
     # Get the length of the array so we can loop through all elements.
     n = len(arr)
+    # If there are fewer than 2 elements, no pair can be formed
+    if n < 2:
+        return None
     # Create an empty dictionary to keep track of numbers we need to find, and the index where we need them.
     # For example, if we see a number x, and need (t-x) to complete the sum,
     # we store: seen[t-x] = index of x
