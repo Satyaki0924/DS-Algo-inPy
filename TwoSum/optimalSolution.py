@@ -3,19 +3,22 @@
 # Instead of checking every possible pair (which is slow and O(N^2)),
 # we use a dictionary to remember what number we need to complete the sum for each element.
 def findPair(arr, t):
-    # 'n' is the length of the array. We need this to loop through all elements.
+    # Get the length of the array so we can loop through all elements.
     n = len(arr)
-    # 'seen' will store numbers we need to find, mapped to the index where we need them.
+    # Create an empty dictionary to keep track of numbers we need to find, and the index where we need them.
     # For example, if we see a number x, and need (t-x) to complete the sum,
     # we store: seen[t-x] = index of x
     seen = {}
     # Loop through each number in the array, one by one.
     for i in range(0, n):
-        # If the current number is in 'seen', it means we've already seen a number
-        # that needs this number to complete the sum. So, we've found our pair!
-        if seen.get(arr[i]):
-            # We return both the numbers and their indices.
-            return {"items": [t-arr[i], arr[i]], "indices": [seen[arr[i]], i]}
+        # Store the current number for clarity.
+        current_number = arr[i]
+        # Check if the current number is in 'seen'.
+        # If it is, we've already seen a number that needs this one to complete the sum.
+        # That means we've found our pair!
+        if seen.get(current_number):
+            # Return the pair of numbers and their indices.
+            return {"items": [t-current_number, current_number], "indices": [seen[current_number], i]}
         # Otherwise, calculate what number we need to find in the future to complete the sum with arr[i].
         # For example, if arr[i] is 3 and t is 11, we need 8 (because 3 + 8 = 11).
         diff = t - arr[i]
@@ -23,7 +26,7 @@ def findPair(arr, t):
         # If we see this needed number later in the array, we'll know we've found a pair.
         seen[diff] = i
 
-# Let's test our function with an example array and target sum.
+# Test our function with an example array and target sum.
 res = findPair([1, 3, 7, 9, 2], 11)
 # Print the result. It will show the pair of numbers and their indices if found, or None if not found.
 print(res)
