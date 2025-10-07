@@ -42,3 +42,6 @@ print("Max water area in container 1: ", findMaxAreaForWaterInContainer(containe
 container2 = [6, 9, 3, 4, 5, 8]
 # Print the max area for container2: 32
 print("Max water area in container 2: ", findMaxAreaForWaterInContainer(container2))
+
+# Time complexity is O(N) because we only loop through the container once.
+# Space complexity is O(1) as no extra space is used.
