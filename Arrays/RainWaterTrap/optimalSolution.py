@@ -24,7 +24,8 @@ def calculateTrappedRainWater(container):
         # Always advance the side with the smaller height because the trapped
         # water is limited by the smaller boundary.
         if curr_left_block < curr_right_block:
-            # If current left block is a new maximum, update left_block_max.
+            # If current left block is a new maximum, update left_block_max. This step avoids any negative number in sum.
+            # if a new max is found, and we perform left_block_max(old max) - curr_left_block(new max), answer would be negative which would be wrong. Water level cannot be in negative.
             if curr_left_block >= left_block_max:
                 left_block_max = curr_left_block
             else:
